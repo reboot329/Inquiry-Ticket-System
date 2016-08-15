@@ -42,6 +42,7 @@ http://mytest2-env.us-east-1.elasticbeanstalk.com/
 ---
 ---
 #####     Change your password.
+
 ---
 
 ![image](https://66.media.tumblr.com/4f0b6869e220d8ea98030ac9af5ab590/tumblr_obxee6ovXE1u4k668o1_1280.png)
@@ -70,7 +71,7 @@ http://mytest2-env.us-east-1.elasticbeanstalk.com/
 ---
 
 ### - Manage a selected ticket by:
- 
+---
 ######     1.Close the ticket
 
 ######     2.Assign/Remove the ticket to yourself
@@ -80,6 +81,7 @@ http://mytest2-env.us-east-1.elasticbeanstalk.com/
 ######     4.View all tickets from this the customer
     
 ######     5.Delete the Customer
+---
 
 ![image](https://66.media.tumblr.com/fb4fd38b01b033a41ad01860c44f1950/tumblr_obxewf8RmS1u4k668o1_1280.png)
 
