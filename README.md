@@ -24,7 +24,7 @@ http://mytest2-env.us-east-1.elasticbeanstalk.com/
 
 
 
-#####     Submit a new ticket.
+#####Submit a new ticket.
 
 ---
 
