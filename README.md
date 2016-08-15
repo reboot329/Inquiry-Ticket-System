@@ -7,6 +7,8 @@ Try it at
 http://mytest2-env.us-east-1.elasticbeanstalk.com/
 
 ---
+---
+---
 
 #### System allows users to log in as ***Customore*** or ***Admin*** and do the following respectively.
 
@@ -24,19 +26,20 @@ http://mytest2-env.us-east-1.elasticbeanstalk.com/
 
 
 
-#####Submit a new ticket.
+##### Submit a new ticket
 
 ---
 
 ![image](https://67.media.tumblr.com/5ad225faa0d48c34e706cb45aba94051/tumblr_obxe6xrmxx1u4k668o1_1280.png)
 -----
+---
 
 #####     View all the tickets you have submitted.
 ![image](https://66.media.tumblr.com/2d4386cb6dbfa9d6690517781a4ceb6f/tumblr_obxemwgnUp1u4k668o1_1280.png)
 
 
 ---
-
+---
 #####     Change your password.
 
 
@@ -45,6 +48,7 @@ http://mytest2-env.us-east-1.elasticbeanstalk.com/
 
 
 ---------------
+---
 ###### (Everytime you submit a ticket, all the Admin will receive an email.)
 
 ![image](https://67.media.tumblr.com/3f801cf2e7715d281e8c46c29c2a165c/tumblr_obxeibpUWG1u4k668o1_1280.png)
