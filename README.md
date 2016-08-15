@@ -92,6 +92,6 @@ http://mytest2-env.us-east-1.elasticbeanstalk.com/
 *Sign up is only allowed for Customer.*
 *If you want to try Admin Account, use*
 
-ID: ==Testadmin1==   PW: ==Testadmin2==
+ID: **Testadmin1**   PW: **Testadmin2**
 
-Email: ==dbtest4fey@gmail.com==    PW: ==dbtestforfey==
+Email: **dbtest4fey@gmail.com**   PW: **dbtestforfey**
