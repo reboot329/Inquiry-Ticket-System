@@ -4,7 +4,7 @@ Implemented on **Amazon Elastic Beanstalk**, data stores on **Amazon RDS** with 
 
 Try the program at 
 
-http://mytest2-env.us-east-1.elasticbeanstalk.com/
+http://iquirysystem.us-east-1.elasticbeanstalk.com/
 
 ---
 ---
