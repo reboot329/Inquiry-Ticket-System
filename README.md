@@ -1,4 +1,4 @@
-An Inquary and Ticket system utilizes **cookies**, **sessions**, and a **MySQL** database on the server, and **Javascript**, **DOM** and **AJAX** on the client.
+An Inquiry and Ticket system utilizes **cookies**, **sessions**, and a **MySQL** database on the server, and **Javascript**, **DOM** and **AJAX** on the client.
 
 Implemented on **Amazon Elastic Beanstalk**, data stores on **Amazon RDS** with **MySQL Engine**.
 
