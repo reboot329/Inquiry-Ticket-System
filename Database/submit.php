@@ -38,8 +38,8 @@ date_default_timezone_set('America/New_York');
 	 
 
 	/////////////////store in to the ticket////////////////////////////
-
-	$db = new mysqli();
+	//$db = new mysqli('localhost', 'reboot329', 'yufei123', 'assign2');
+	$db = new mysqli('aa18q9zlow6rztb.cqulctfc4zl7.us-east-1.rds.amazonaws.com', "root", "yufei123", "ebdb","3306");
 	if ($db->connect_error):
          	die ("Could not connect to db: " . $db->connect_error);
       	endif;
@@ -69,8 +69,8 @@ date_default_timezone_set('America/New_York');
  	$mail->SMTPSecure = "tls"; // sets tls authentication
  	$mail->Host = "smtp.pitt.edu"; // sets Pitt as the SMTP server
   	$mail->Port = 587; // set the SMTP port for the Pitt server
- 	$mail->Username = "xxxxx"; // Pitt username
-  	$mail->Password = "xxxxxxxx"; // Pitt password
+ 	$mail->Username = "fey14"; // Pitt username
+  	$mail->Password = "revenger+75"; // Pitt password
 	$sender = "fey14@pitt.edu";
 	$receiver = $email; 
 	$subj = "The Request You Have Submited";
@@ -90,7 +90,8 @@ date_default_timezone_set('America/New_York');
 
 
 	///////////////////////send to all admins//////////////////////////
-	$db = new mysqli();
+	//$db = new mysqli('localhost', 'reboot329', 'yufei123', 'assign2');
+	$db = new mysqli('aa18q9zlow6rztb.cqulctfc4zl7.us-east-1.rds.amazonaws.com', "root", "yufei123", "ebdb","3306");
 	if ($db->connect_error):
          	die ("Could not connect to db: " . $db->connect_error);
       	endif;

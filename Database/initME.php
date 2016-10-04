@@ -12,7 +12,9 @@ function __autoload($class) {
  </head>
  <body>
  <?php
-      $db = new mysqli();
+      //$db = new mysqli('localhost', "root", "yufei123", "ebdb","3306");
+ 	  //$db = new mysqli('localhost', 'reboot329', 'yufei123', 'assign2');
+ 		$db = new mysqli('aa18q9zlow6rztb.cqulctfc4zl7.us-east-1.rds.amazonaws.com', "root", "yufei123", "ebdb","3306");
       if ($db->connect_error):
          die ("Could not connect to db: " . $db->connect_error);
       endif;

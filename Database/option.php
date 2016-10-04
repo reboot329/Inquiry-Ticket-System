@@ -8,7 +8,8 @@
  }
 
 
-		$db = new mysqli();
+		$db = new mysqli('aa18q9zlow6rztb.cqulctfc4zl7.us-east-1.rds.amazonaws.com', "root", "yufei123", "ebdb","3306");
+ 		//$db = new mysqli('localhost', 'reboot329', 'yufei123', 'assign2');
 		if ($db->connect_error):
          	die ("Could not connect to db: " . $db->connect_error);
       	endif;
@@ -31,8 +32,8 @@
 		$mail->SMTPSecure = "tls"; // sets tls authentication
 		$mail->Host = "smtp.pitt.edu"; // sets Pitt as the SMTP server
 		$mail->Port = 587; // set the SMTP port for the Pitt server
-		$mail->Username = "xxxxx"; // Pitt username
-		$mail->Password = "xxxxxxxx"; // Pitt password
+		$mail->Username = "fey14"; // Pitt username
+		$mail->Password = "revenger+75"; // Pitt password
 		$sender = "fey14@pitt.edu";
 		$receiver = $ticket_row['Email']; 
 		$subj = "The Request You Have Submmited has been closed.";
@@ -86,7 +87,7 @@
 			$result = mysqli_query($db,"SELECT * FROM Ticket WHERE Ticket.Tickets ="."'$keys'");
 			$ticket_row = mysqli_fetch_array($result);
 			
-			require("class.phpmailer.php");
+			require("class.PHPMailer.php");
 
 		$mail = new PHPMailer();
 		$mail->IsSMTP(); // telling the class to use SMTP
@@ -94,8 +95,8 @@
 		$mail->SMTPSecure = "tls"; // sets tls authentication
 		$mail->Host = "smtp.pitt.edu"; // sets Pitt as the SMTP server
 		$mail->Port = 587; // set the SMTP port for the Pitt server
-		$mail->Username = "xxxxx"; // Pitt username
-		$mail->Password = "xxxxxxxx"; // Pitt password
+		$mail->Username = "fey14"; // Pitt username
+		$mail->Password = "revenger+75"; // Pitt password
 		$sender = "fey14@pitt.edu";
 		$receiver = $ticket_row['Email']; 
 		$subj = "Tech need your help for details about the tickets";

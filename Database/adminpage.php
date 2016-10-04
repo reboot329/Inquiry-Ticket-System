@@ -19,7 +19,7 @@ date_default_timezone_set('America/New_York');
 <html>
 <head>
 	<title>Admin Page</title>
-	<script type="text/javascript">
+<script type="text/javascript">
 	
 	var which_one_to_view = 0;
 	var which_col = 0;
@@ -31,7 +31,11 @@ date_default_timezone_set('America/New_York');
 	}
 	
 	function view_spe_tickets(wat)
-	{										//wat == 1  Open_Tickets
+	{	
+		if(wat == 4)
+		{
+			convinient();
+		}									//wat == 1  Open_Tickets
 		var num;									//wat == 2  My_Tickets
 		var spe;									//wat == 3 Unassigned_Tickets
 		if (old == wat)									//wat == 4 all_Tickets
@@ -64,6 +68,7 @@ date_default_timezone_set('America/New_York');
 		}	
 		if (wat == 4)
 		{
+
 			num = 0;
 			spe = 0;
 			document.btnForm.View_All_Tickets.value = "View open Tickets";
@@ -120,43 +125,51 @@ date_default_timezone_set('America/New_York');
 	function view_select()
 	{	
 		var data;
-		
+			
+		if(which_one_to_view == 0)
+		{
+			alert("Please selece one on the rightmost column.");
 	
+		}
+		else
+		{
+				data = 'num=' + which_one_to_view;
 		
-		data = 'num=' + which_one_to_view;
-	
-		var httpRequest;
+			var httpRequest;
+			
+	        if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+	            //alert('XMLHttpRequest');
+	            httpRequest = new XMLHttpRequest();
+	            if (httpRequest.overrideMimeType) {
+	                httpRequest.overrideMimeType('text/xml');
+	            }
+	        }
+	        else if (window.ActiveXObject) { // Older versions of IE
+	            //alert('IE -- XMLHTTP');
+	            try {
+	                httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+	                }
+	            catch (e) {
+	                try {
+	                    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+	                }
+	                catch (e) {}
+	            }
+	        }
+	        if (!httpRequest) {
+	            alert('Giving up :( Cannot create an XMLHTTP instance');
+	            return false;
+	        }
+			
+			
+			httpRequest.open('POST', 'view_select.php', true);
+			httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			httpRequest.onreadystatechange = function() { after_view_select(httpRequest); };
+			
+			httpRequest.send(data);
+		}
 		
-        if (window.XMLHttpRequest) { // Mozilla, Safari, ...
-            //alert('XMLHttpRequest');
-            httpRequest = new XMLHttpRequest();
-            if (httpRequest.overrideMimeType) {
-                httpRequest.overrideMimeType('text/xml');
-            }
-        }
-        else if (window.ActiveXObject) { // Older versions of IE
-            //alert('IE -- XMLHTTP');
-            try {
-                httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-                }
-            catch (e) {
-                try {
-                    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                catch (e) {}
-            }
-        }
-        if (!httpRequest) {
-            alert('Giving up :( Cannot create an XMLHTTP instance');
-            return false;
-        }
 		
-		
-		httpRequest.open('POST', 'view_select.php', true);
-		httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		httpRequest.onreadystatechange = function() { after_view_select(httpRequest); };
-		
-		httpRequest.send(data);
 	}
 	
 	function view_my(me)
@@ -199,10 +212,28 @@ date_default_timezone_set('America/New_York');
 	       
                var result = httpRequest.responseText;
 				var new_arr = result.split("|");
+
 				
-				document.write("<b style='color:blue; font-size:36px;'>The Selected Ticket Is Here:<br><br><br></b>");
+				document.write("<body style='background-color:lightblue;'>");
+				document.write("<b style='font-size:36px;'>Selected Ticket<br><br></b>");
+
+
+
+				document.write("<table border = '1px solid black; border-collapse=collapse;' style='width:100%; text-align:left;'>");
+				document.write("<tr style='background-color:lightblue;'><th>Ticket Info</th><th>Details</th></tr>");
+				document.write("<tr><th>Ticket ID</th><th>" + new_arr[0] + "</th></tr>");
+				document.write("<tr><th>Received Time</th><th>" + new_arr[1] + "</th></tr>");
+				document.write("<tr><th>Sender Name</th><th>" + new_arr[2] + "</th></tr>");
+				document.write("<tr><th>Sender Email</th><th>" + new_arr[3] + "</th></tr>");
+				document.write("<tr><th>Subject</th><th>" + new_arr[4] + "</th></tr>");
+				document.write("<tr><th>Current Tech Support</th><th>" + new_arr[5] + "</th></tr>");
+				document.write("<tr><th>Ticket Content</th><th>" + new_arr[7] + "</th></tr>");
+				document.write("</table>");
+
+				/*
 				document.write("<b style='color:red; font-size:16px;'>Ticket ID:                  </b>");
 				document.write(new_arr[0]);
+
 				
 				
 				document.write("<br><br>");
@@ -229,9 +260,12 @@ date_default_timezone_set('America/New_York');
 				document.write("<b style='color:green font-size:16px;'>Content:       <br><br>           </b>");
 				document.write(new_arr[7]);
 				document.write("<br><br><br><br><br><br><br>");
+
+				*/
 				
-				
-				var closebtn = document.createElement("input");  
+				var closebtn = document.createElement("input");
+				//background-color: #008CBA;
+				closebtn.style = " color: white; padding: 15px 32px;  text-align: center; text-decoration: none; display: inline-block;  font-size: 16px;  border-radius: 12px; background-color: black; color: grey;border-radius: 50%;" ; 
 				closebtn.type = "button" ;                       
 				closebtn.value = "Close" ;
 				closebtn.onclick = function() { option(1,new_arr[0]); };
@@ -240,21 +274,24 @@ date_default_timezone_set('America/New_York');
 				
 				
 				var assignbtn = document.createElement("input");  
-				assignbtn.type = "button" ;                       
+				assignbtn.type = "button" ;
+				assignbtn.style = " background-color: #008CBA; padding: 15px 32px;  text-align: center; text-decoration: none; display: inline-block;  font-size: 16px;  border-radius: 12px;" ;                        
 				assignbtn.value = "Assign/Remove" ;
 				assignbtn.onclick = function() { option(2,new_arr[0]); };
 				document.body.appendChild(assignbtn);             
 				assignbtn = null;
 				
 				var emailbtn = document.createElement("input");  
-				emailbtn.type = "button" ;                       
+				emailbtn.type = "button" ;   
+				emailbtn.style = " background-color: #4CAF50; padding: 15px 32px;  text-align: center; text-decoration: none; display: inline-block;  font-size: 16px;  border-radius: 12px;" ;                    
 				emailbtn.value = "Email to Submitter" ;
 				emailbtn.onclick = function() { option(3,new_arr[0]); };
 				document.body.appendChild(emailbtn);             
 				emailbtn = null;
 				
 				var delbtn = document.createElement("input");  
-				delbtn.type = "button" ;                       
+				delbtn.type = "button" ;
+				delbtn.style = "background-color: rgb(255, 141, 0); padding: 15px 32px;  text-align: center; text-decoration: none; display: inline-block;  font-size: 16px;  border-radius: 12px;" ;                      
 				delbtn.value = "Tickets from same Submmitter" ;
 				delbtn.onclick = function() { option(4,new_arr[0]); };
 				document.body.appendChild(delbtn);             
@@ -264,19 +301,23 @@ date_default_timezone_set('America/New_York');
 				document.write("<br><br>");
 				
 				var backbtn = document.createElement("input");  
-				backbtn.type = "button" ;                       
+				backbtn.type = "button" ;
+				backbtn.style = "background-color: grey; padding: 15px 32px;  text-align: center; text-decoration: none; display: inline-block;  font-size: 16px;  border-radius: 12px;" ;                       
 				backbtn.value = "Back" ;
+				
 				backbtn.onclick = function() {convinient();};
 				document.body.appendChild(backbtn);             
 				backbtn = null;
 				
 				var btn = document.createElement("input");  
-				btn.type = "button" ;                       
+				btn.type = "button" ;  
+				btn.style = "background-color: red; padding: 15px 32px;  text-align: center; text-decoration: none; display: inline-block;  font-size: 16px;  border-radius: 12px;" ;                     
 				btn.value = "Delete the ticket" ;
 				btn.onclick = function() { option(5,new_arr[0]); };
 				document.body.appendChild(btn);             
 				btn = null;
-				
+				document.write("<br><br>");
+				document.write("</body>");
 				
            }
            else
@@ -453,22 +494,26 @@ date_default_timezone_set('America/New_York');
 		default: 
 			return DataValue.toString(); 
 		} 	
-	}
-        
+	}        
 </script>
 
 	
 </head>
-<body>
-<font style="color:blue; font-size:36px;">Welcome to Admin Page</font><br /><br />
-	
+<body scroll=no>
+
+<link rel="stylesheet" href="css/adminpage.css">
+<div id="title-div">
+<font style="color:black; font-size:36px; align-content: center;">Admin Page</font><br /><br />
+</div>
+<div id="table-div">
 <?php
 	
 	if(isset($_SESSION['option']))
 	{	
 		$ppl = $_SESSION['username2'];
 		
-		$db = new mysqli();
+		$db = new mysqli('aa18q9zlow6rztb.cqulctfc4zl7.us-east-1.rds.amazonaws.com', "root", "yufei123", "ebdb","3306");
+		//$db = new mysqli('localhost', 'reboot329', 'yufei123', 'assign2');
 		if ($db->connect_error):
          	die ("Could not connect to db: " . $db->connect_error);
       	endif;
@@ -493,20 +538,22 @@ date_default_timezone_set('America/New_York');
 	}
 ?>
 
-
 	
 	<table id = "myTable" border = "1">
 <?php
 
-	$db = new mysqli();
+	$db = new mysqli('aa18q9zlow6rztb.cqulctfc4zl7.us-east-1.rds.amazonaws.com', "root", "yufei123", "ebdb","3306");
+	//$db = new mysqli('localhost', 'reboot329', 'yufei123', 'assign2');
 		if ($db->connect_error):
          	die ("Could not connect to db: " . $db->connect_error);
       	endif;
 		
 	$result = $db->query("select Tickets, Received, Sender, Email, Subject, Tech, Status from Ticket");
     $rows = $result->num_rows;
+
+    	
 		echo "<thead>";
-		echo "<tr align = 'center'>";
+		echo "<tr id = 'tr-div' align = 'center' style='background-color:lightgreen;'>";
 		echo "<td>Tickets</td>";
         echo "<td>Received</td>";
         echo "<td>Sender</td>";
@@ -543,7 +590,7 @@ date_default_timezone_set('America/New_York');
         echo "</tr>";
     endfor;	
 	echo "</tbody>";
-		 echo "<tr align = center>";
+		 echo "<tr align = center style='background-color:grey;'>";
 		 
 ?>		 
 		 <td>Sort By <input type = "radio" name = "Sortby"  value = "Tickets" onclick = "sortby('Tickets')"</td>
@@ -561,24 +608,27 @@ date_default_timezone_set('America/New_York');
 	</form>
 
 	<form name = "btnForm">
-
-	<input type = "button" name = "View_Open_Tickets" value = "View All Tickets" onclick = "sortby('Tickets')">
+	<div id ="buttons-div">
+	<input type = "button" class ="button button1" name = "View_Open_Tickets" value = "View All Tickets" onclick = "sortby('Tickets')">
 	
-	<input type = "button" name = "Sort" value = "Sort" onclick = "do_sort()">
+	<input type = "button" class ="button button2" name = "Sort" value = "Sort" onclick = "do_sort()">
 
-	<input type = "button" name = "View_Selected_Ticket" value = "View Selected Ticket" onclick = 'view_select()'>
-	<br /><br />	         
+	<input type = "button" class ="button button3" name = "View_Selected_Ticket" value = "View Selected Ticket" onclick = 'view_select()'>
+		
+	<!-- 
 	<input type = "button" name = "View_My_Tickets" value = "View My Tickets" onclick =  'view_my("<?php echo "$me";?>")' >
-
-	<input type = "button" name = "Logout" value = "Logout" onclick = "logout()">
-
+		-->
+	<input type = "button" class ="button button4" name = "Logout" value = "Logout" onclick = "logout()">
+	</div>
+	<!-- 
 	<input type = "button" name = "View_Unassigned_Tickets" value = "View Unassigned Tickets" onclick = "view_spe_tickets(3)">
-
+	-->
+	</form>
 	<script type="text/javascript">	
 	var Otable = document.getElementById("myTable");
 	</script>
 
 	
-	
+	</div>
 </body>
 </html>

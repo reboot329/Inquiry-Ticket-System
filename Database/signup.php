@@ -7,17 +7,23 @@
 
 <html>
  <head>
-  <title></title>
+  <meta charset="UTF-8">
+    <title style="font-size:96px;">SignUp Page</title>
+    
+    
+    
+    
+        <link rel="stylesheet" href="css/signuppage.css">
  </head>
  <body>
 <?php
 
-if(isset($_POST['Uname']))
-{
+	if(isset($_POST['Uname']))
+	{
 	if(register() == -1)
 	{
 ?>
-		<script type="text/javascript">
+<script type="text/javascript">
 		alert("Username or Email exists in database. Try another one.");
 		window.location.href = "signup.php";
 		</script>
@@ -49,7 +55,8 @@ function register()
 {
 	$username = $_POST['Uname'];
 	$email = $_POST['Email'];
-	$db = new mysqli();
+	//$db = new mysqli('localhost', 'reboot329', 'yufei123', 'assign2');
+	$db = new mysqli('aa18q9zlow6rztb.cqulctfc4zl7.us-east-1.rds.amazonaws.com', "root", "yufei123", "ebdb","3306");
 	if ($db->connect_error):
         		die ("Could not connect to db: " . $db->connect_error);
     endif;
@@ -88,33 +95,40 @@ function signUpPage()
 
 ?>
 
-	<form name = "menuform"
+  <div id="form-main">
+  <div id="form-div">
+	<form class="form" id = "form1"
+			name = "menuform"
 	      action = "signup.php"
 	      method = "POST">
 
-	<b style="">Enter Username:</b>
-	<input type = "text" name = "Uname">
-	<br /><br />
-
-	<b style="">Enter password:</b>
-	<input type = "text" name = "Pword">
-	<br /><br />
-
-	<b style="">Enter Email Address:</b>
-	<input type = "text" name = "Email">
-	<br /><br />
-
-	<b style="">Enter A nickname:</b>
-	<input type = "text" name = "Nname">
-	<br /><br />
+	<p class="username">	
+	<input type = "text" name = "Uname" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="UserName" id="username" value = ""/>
+	</p>
 
 
+	<p class="password">	
+	<input type = "password" name = "Pword" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Password" id="password" value = ""/>
+	</p>
 
-	<input type = "submit" value = "Sign Up">
+	<p class="email">	
+	<input type = "text" name = "Email" class="validate[required,custom[email]] feedback-input] feedback-input" placeholder="Email" id="email" value = ""/>
+	</p>
+
+
+	<p class="nickname">	
+	<input type = "text" name = "Nname" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nick Name" id="nickname" value = ""/>
+	</p>
+
+
+
+	<div class="submit">
+	<input type = "submit" value = "Sign Up" id="button-blue">
+	<div class="ease"></div>
 	
-	
-	
+	</div>
 	</form>
+   </div>
 
 	
 <?php	
