@@ -21,3 +21,20 @@ http://iquirysystem.us-east-1.elasticbeanstalk.com/
 Admin: **321**   PW: **321**  
 User: **123**   PW: **123**
 
+----
+----  
+
+## Log  Page
+
+![image](http://i.imgur.com/J63jKtH.png)
+
+## Sign Up Page
+
+![image](http://i.imgur.com/ZkXd6zD.png)
+
+## Inquiry Submit Page
+
+![image](http://i.imgur.com/SDCvaEC.png)
+
+## Admin Operation Page
+![image](http://i.imgur.com/4t3Hg6C.png)
